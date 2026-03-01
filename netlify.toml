@@ -1,0 +1,18 @@
+[build]
+  functions = "netlify/functions"
+  publish   = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  node_bundler = "esbuild"
+
+# زيادة timeout الدوال لـ 26 ثانية (الحد الأقصى في Netlify)
+[functions."comments"]
+  included_files = []
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
